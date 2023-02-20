@@ -1,8 +1,7 @@
 const mongoose = require("mongoose")
 
 
-mongoose.connect('mongodb+srv://xd666:naveen123@cluster.gbcmjjt.mongodb.net/?retryWrites=true&w=majority'
-);
+mongoose.connect('mongodb+srv://naveen:naveen123@cluster0.6tk87vt.mongodb.net/?retryWrites=true&w=majority');
 
 
 
