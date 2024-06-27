@@ -5,35 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jobs</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../student/css/style.css" />
+    <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
     <script src="./js/auth.js"></script>
   </head>
   <body id="job-body">
-    <div class="container">
-      <div  style="overflow: hidden;"
+    <nav id="navbar">
+      <div class="container1">
+        <center>
+        <h1 class="logo">
+          <a href="./studentindex.html">Student Internship Management System</a>
+        </h1>
+        <ul>
+          <li><a href="./studentindex.html">Home</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="../about.html" target="_blank">About</a></li>
+          <li><a href="../contact.html" target="_blank">Contact</a></li>
+          <li><a href="../faq.html" target="_blank">FAQ</a></li>
+          <li><a href="../feedback.html" target="_blank">Reviews</a></li>
+          <li><a class="logout-btn" href="#">Logout</a></li>
+        </ul>
+      </center>
+      </div>
+    </nav>
+    <div class="container" style = "padding-top: 20px;">
+      <div  style="overflow: visible;"
        class="topnav">
-        <input style="float: center;
-        color: black;
-        padding: 6px;
-      
-        border: 1px solid;
-        margin-top: 8px;
-        margin-right: 16px;
-        font-size: 17px;" type="text" id="searchbox" placeholder="Search..">
-        <select name="filtertype" style="padding: 7px;   border-radius: 8px;background-color: #fff" id="filtertype">
+        <input class="searchbox" type="text" id="searchbox" placeholder="Search...">
+        <input class="searchbox" type="text" onkeydown="return /[a-z]/i.test(event.key)" id="companyName" placeholder="Company name">
+        <input class="searchbox" type="text" onkeydown="return /[a-z]/i.test(event.key)" id="jobTitle" placeholder="Job Title">
+        <input class="searchbox" type="number" min="1" max="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" id="experience" placeholder="Experience">
+      <!--  <input class="searchbox" type="text" onkeydown="return /[a-z]/i.test(event.key)" id="jobType" placeholder="Job Type..."> -->
+        <select class="searchbox" id="jobType" name="jobType">
+          <option value="">Job Type</option>
+          <option value="onsite">On-site</option>
+          <option value="remote">Remote</option>
+        </select>
+        <input class="searchbox" type="number" min="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "6" id="salary" placeholder="Salary">
+     <!--  <select name="filtertype" style="padding: 7px;   border-radius: 8px;background-color: #fff" id="filtertype">
           <option value="1">Company Name</option>
           <option value="2">Job Title</option>
           <option value="3">Experience Level</option>
           <option value="4">Work Type</option>
-          </select>
-        <button style="padding: 7px;   border-radius: 8px;background-color: #fff" class="searchbutton">Search</button>
+          </select> -->
+        <button style="padding: 8px 15px; border-radius: 8px;background-color: #fff" class="searchbutton">Search</button>
       </div>
 
       <div id="jobs">
-        
+        <div id="popup1" class="overlay">
+          <div class="popup">
+            <h2>Share Job to your friend</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+              <input class="searchbox" type="email" placeholder="Mail Id" id="referMail" required/>
+            <a  href="#">  <button class="apply-btn btns" id="closeBtn" onclick="btnClicked(document.getElementById('referMail').value)"> Share </button> </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <script src="js/viewJobs.js"></script>
+ <!--   <section class="features bg-dark">
+      <div class="container">
+          <div class="box">
+              <i class="fa-solid fa-hotel fa-3x"></i>
+              <h3>Location</h3>
+              <p>MO, USA</p>
+          </div>
+          <div class="box">
+              <i class="fa-solid fa-phone fa-3x"></i>
+              <h3>phone</h3>
+              <p>(+1) 1234567890</p>
+          </div>
+          <div class="box">
+              <i class="fa-solid fa-envelope fa-3x"></i>
+              <h3>Email</h3>
+              <p>studentinternship123@gmail.com</p>
+      </div>       
+  </section>   -->
+  
+  <div class="clr"></div>
+  
+     
+  <footer class="footer bg-dark" style="margin-top: 0px; background:#444;">
+      <div class="social">
+          <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+          <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+      </div>
+      <p>copyright &copy 2023 - SIMS</p>
+  </footer>
+    <script src="js/viewJobs.js"> </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -6,15 +6,157 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Profile</title>
         <link rel="stylesheet" href="css/style.css" />
+        <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
         
+        <style>
 
+          .containerr{
+              width: 100%;
+              height: 100%;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              grid-gap :7rem;
+              padding: 0 2rem;
+              background: whitesmoke;
+              border: 2px solid #333;
+              margin-top: 40px;
+              border-radius: 8px;
+              min-width: 500px;
+              left: 20%;
+          }
+          
+          .profileimg{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+          }
+          
+          .login-content{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+          }
+          .profileimg img{
+            width: 250px;
+            left: 0% !important
+          }
+        
+          
+          
+          @media screen and (max-width: 1050px){
+            .containerr{
+              grid-gap: 5rem;
+            }
+          }
+          
+          @media screen and (max-width: 1000px){
+            form{
+              width: 290px;
+            }
+          
+            .login-content h2{
+                  font-size: 2.4rem;
+                  margin: 8px 0;
+            }
+          
+            .profileimg img{
+              width: 400px;
+            }
+          }
+          
+          @media screen and (max-width: 900px){
+            .containerr{
+              grid-template-columns: 1fr;
+            }
+          
+            .img{
+              display: none;
+            }
+          
+            .wave{
+              display: none;
+            }
+          
+            .login-content{
+              justify-content: center;
+            }
+          }
+          .btns{
+    display: inline-block;
+    font-size: 12px;
+    padding: 8px 15px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    border: 0px;
+    font-weight: 800;
+    box-shadow: 0px 0px 14px -7px turquoise;
+    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.btns:hover{
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+.btns:active {
+    transform: scale(0.95);
+  }
+.btn-light {
+    background: #fff;
+    color: #333;
+}
+                </style>
     </head>
-    <body>
-        <div class="container">
-            <div id="profiles">
-                
+    <body id="profile-body">
+        <nav id="navbar">
+            <div class="container1">
+              <h1 class="logo">
+                <a href="./studentindex.html">Student Internship Management System</a>
+              </h1>
+              <ul>
+                <li><a href="./studentindex.html">Home</a></li>
+                <li><a class="current" href="profile.html">Profile</a></li>
+                <li><a href="../about.html" target="_blank">About</a></li>
+                <li><a href="contact.html"  target="_blank">Contact</a></li>
+                <li><a href="../faq.html" target="_blank">FAQ</a></li>
+                <li><a href="feedback.html"  target="_blank" >Reviews</a></li>
+                <li><a class="logout-btn" href="#">Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div class="profileContainer">  
+             
+          <div id="profiles">
+            
+               
             </div>
           </div>
+          <footer class="footer bg-dark" id="footer" style="bottom: 0 !important; position: fixed; background:#444;">
+            <div class="social">
+              <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                  <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                  <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                  <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+            </div>
+            <p>copyright &copy 2023 - SIMS</p>
+        </footer>
           <script src="./js/profile.js"></script>
+          <script src="./js/auth.js"></script>
+          
+          <script>
+
+            
+          </script>
     </body>
 </html>

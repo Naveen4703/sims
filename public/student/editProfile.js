@@ -6,9 +6,12 @@ const $firstname=document.getElementById("first-name")
 const $lastname=document.getElementById("last-name")
 const $email=document.getElementById("email")
 const $gender= document.getElementById("gender")
-const $age=document.getElementById("age")
 const $universityid=document.getElementById("universityid")
 const $phone=document.getElementById("phone")
+const $ssnNumber = document.getElementById("ssn")
+const $month=document.getElementById("month")
+const $year=document.getElementById("year")
+
 
 
 window.onload=async()=>{
@@ -26,9 +29,12 @@ window.onload=async()=>{
      $lastname.value = result.lastname
      $email.value = result.email
      $gender.value = result.gender
-     $age.value = result.age
+     $month.value = result.month
+     $year.value = result.year
+     $ssnNumber.value = result.ssn
      $universityid.value = result.universityid
      $phone.value = result.phone
+     $ssnNumber.value = result.ssn
     
 }
  
@@ -42,13 +48,16 @@ $studentRegForm.addEventListener('submit',async (e)=>{
     const $lastname=document.getElementById("last-name").value
     const $email=document.getElementById("email").value
     const $gender= document.getElementById("gender").value
-    const $age=document.getElementById("age").value
+    const $month=document.getElementById("month").value
+    const $year=document.getElementById("year").value
     const $universityid=document.getElementById("universityid").value
     const $phone=document.getElementById("phone").value
+    const $ssnNumber = document.getElementById("ssn").value
+    let $age = 2023 - $year
+    $month > 03 ? $age++ : $age
+ //   console.log($gender,$phone,"gender, value")
 
-    console.log($gender,$phone,"gender, value")
-
-    
+        if($ssnNumber.length == 4){
         const result = await fetch(`/editprofile?studentid=${localStorage.getItem('studentid')}`, {
             method: 'PATCH',
             headers: {
@@ -60,7 +69,10 @@ $studentRegForm.addEventListener('submit',async (e)=>{
                 firstname:$firstname,
                 lastname:$lastname,
                 email:$email,
+                month: $month,
+                year: $year,
                 age:$age,
+                ssn: $ssnNumber,
                 gender:$gender,
                 phone:$phone,
                 universityid:$universityid
@@ -74,6 +86,10 @@ $studentRegForm.addEventListener('submit',async (e)=>{
         } else {
             alert(result.error)
         }
+      }
+      else{
+        alert("Please enter SSN correctly")
+      }
     }
 )
 

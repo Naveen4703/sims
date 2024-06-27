@@ -1,5 +1,7 @@
+let studentName = localStorage.getItem("name")
+studentName = studentName.charAt(0).toUpperCase() + studentName.slice(1)
 
-document.getElementById("welcome").innerHTML = "welcomes "+localStorage.getItem("name")+" you logged in as a student"
+document.getElementById("welcome").innerHTML = "Welcomes "+studentName+" You logged in as a Student"
 
 const $totaljobs=document.querySelector(".totaljobs")
 const $totalapplied=document.querySelector(".totalapplied")
@@ -8,6 +10,7 @@ const $logoutbtn=document.querySelector(".logout-btn")
 const token=localStorage.getItem('token')
 
 window.onload=async()=>{
+    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
     console.log("onload")
     const result = await fetch('/totaljobs', {
         method: 'GET',
@@ -26,6 +29,8 @@ window.onload=async()=>{
     }).then((res) => res.json())
     
     console.log(result1.jobsCount)
+    let load = document.getElementById("loadingDiv")
+    load.remove()
     document.getElementById("appliedjobscount").innerHTML=result1.jobsCount
 }
 
@@ -40,11 +45,13 @@ $totalapplied.addEventListener('click',(e)=>{
 })
 
 $logoutbtn.addEventListener('click',async(e)=>{
+    const confirmLogout=confirm("Are you sure you want to logout?");
+    if(confirmLogout){
     const result = await fetch('/student/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization':'Bearer '+token
+            'Authorization':'Bearer '+ localStorage.getItem('token')
         },
         body: JSON.stringify({
            
@@ -52,9 +59,10 @@ $logoutbtn.addEventListener('click',async(e)=>{
     }).then((res)=>{
         localStorage.clear()
         location.href="/"
-        alert("success")
+       // alert("success")
    return res.json()
     })
     console.log(result)
+}
 })
 
