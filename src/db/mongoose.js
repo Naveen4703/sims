@@ -1,14 +1,6 @@
 const mongoose = require("mongoose")
 
-
-mongoose.connect('mongodb+srv://naveen:naveen123@cluster0.6tk87vt.mongodb.net/?retryWrites=true&w=majority');
-
-
-
-// mongoose.connect('mongodb://127.0.0.1:27017/student-internship-api'
-//);
-
-
+mongoose.connect(  'mongodb+srv://sims:sims123@database-1.nkkb8uo.mongodb.net/sims?retryWrites=true&w=majority&appName=database-1'); //     'mongodb://127.0.0.1:27017/student-internship-api'  //        
 
  
 
