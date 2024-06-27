@@ -29,8 +29,8 @@ app.use(contactRouter)
 //  API Documentation tool
 app.use(
     treblle({
-      apiKey: tGMM21jm4cYeSi9ySK0Gtn1YcNivgz7m,
-      projectId: 83LQQqokF1SAoJhb,
+      apiKey: "tGMM21jm4cYeSi9ySK0Gtn1YcNivgz7m",
+      projectId: "83LQQqokF1SAoJhb",
       additionalFieldsToMask: [],
     })
   )
