@@ -9,6 +9,8 @@ const admin=require("./models/admins.js")
 const adminRouter=require("./routers/admin.js")
 const jobsRouter = require('./routers/job.js')
 const contactRouter = require('./routers/contact.js')
+const dotnev = require('dotenv').config()
+const treblle = require('@treblle/express')
 
 const app=express()
 
@@ -23,6 +25,15 @@ app.use(companyRouter)
 app.use(adminRouter)
 app.use(jobsRouter)
 app.use(contactRouter)
+
+//  API Documentation tool
+app.use(
+    treblle({
+      apiKey: process.env.TREBLLE_API_KEY,
+      projectId: process.env.TREBLLE_PROJECT_ID,
+      additionalFieldsToMask: [],
+    })
+  )
 
 app.listen(port,()=>{
     console.log(`server is up and running on http://localhost:${port}`)
