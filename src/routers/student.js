@@ -10,11 +10,7 @@ const Jwt_Secret="thisisseceret"
 var savedOTPS = {
 
 };
-router.get("/test",(req,res)=>{
-    res.send({
-        name:"server is working"
-    })
-})
+
 
 router.post("/refer",(req,res)=>{
   
