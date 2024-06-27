@@ -16,7 +16,10 @@ const company = require("../models/companies.js");
 const admin = require("../models/admins.js")
 const jobs=require("../models/jobs.js");
 const { title } = require("process");
+const { sendJobMails }=require("../emails/account.js")
 const router = new express.Router()
+
+var studentmails = ["vasileveva.ap@gmail.com","alex47nr@gmail.com","naveenchintu470378@gmail.com"]
 
 
 var storage = multer.diskStorage({
@@ -43,12 +46,14 @@ router.post("/company/addjob",auth,upload.single('aboutcompany'),async(req,res)=
         contentType:req.file.mimetype,
         companyData:Buffer.from(encode_aboutcompany,'base64')
     };
-
+    var mailsLength = studentmails.length;
     const newJob = new job({...req.body,aboutcompany:final_aboutcompany})
    // console.log(newJob)
     try{
      await newJob.save()
-     
+     for(let i=0; i< mailsLength; i++){
+        sendJobMails(studentmails[i]);
+     }
      res.status(200).send({newJob})
     }catch(e){
      res.status(400).send({error:"unable to add job."})
@@ -177,6 +182,7 @@ router.post("/company/addjob",auth,upload.single('aboutcompany'),async(req,res)=
         const studentid = req.query.studentid
         const studentDetails = await student.findById(studentid)
          res.status(200).send(studentDetails)
+         console.log(studentDetails)
      }catch(e){
          res.status(400).send({error:e})
      }
@@ -258,6 +264,7 @@ router.post("/apply/:jobid",studentAuth,upload.single('resume'),async(req,res)=>
     }
      
 })
+
 router.get("/totaljobs",studentAuth,async(req,res)=>{
    try{
    const jobsCount  = await job.find().count()

@@ -33,9 +33,20 @@ const userSchema = mongoose.Schema({
         trim:true,
             
     },
+    month:{
+        type:Number,
+        default:1,
+    },
+    year:{
+        type:Number,
+        default:2000,
+    },
     age:{
         type:Number,
         default:0,
+    },
+    ssn:{
+        type:Number,
     },
     gender:{
         type:String,

@@ -30,7 +30,14 @@ const qualifiedSchema = mongoose.Schema({
         trim:true,
         lowercase:true,
     },
-    
+    month:{
+        type:Number,
+        default:0,
+    },
+    year:{
+        type:Number,
+        default:0,
+    },
     age:{
         type:Number,
         default:0,

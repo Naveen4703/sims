@@ -30,9 +30,8 @@ router.post("/admin",async(req,res)=>{
     }catch(e){
      res.status(400).send({error:"unable to register"})
     }
-  
- 
  })
+ 
  router.post("/adminjobs",auth,async(req,res)=>{
     job.find().then((jobs)=>{
         //console.log(jobs)
@@ -255,6 +254,7 @@ router.post("/admin/reset-password", async(req,res)=>{
         res.status(400).send(e)
     }
 })
+
 
 
 module.exports = router

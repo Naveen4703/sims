@@ -29,6 +29,14 @@ const companySchema = mongoose.Schema({
         trim:true,
                    
     },
+    month:{
+        type:Number,
+        default:0,
+    },
+    year:{
+        type:Number,
+        default:0,
+    },
     age:{
         type:Number,
         default:0,

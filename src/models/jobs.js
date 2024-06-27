@@ -31,6 +31,11 @@ const jobSchema = mongoose.Schema({
         required:true,
         trim:true,   
     },
+    salary:{
+        type:Number,
+        default:20000,
+       
+    },
     empbenefits:{
         type:String,
         required:true,

@@ -12,6 +12,7 @@ const contactRouter = require('./routers/contact.js')
 
 const app=express()
 
+
 const port=process.env.PORT || 4000
 const publicDirectoryPath=path.join(__dirname,'../public')
 
@@ -24,5 +25,5 @@ app.use(jobsRouter)
 app.use(contactRouter)
 
 app.listen(port,()=>{
-    console.log("server is up and running on ",port)
+    console.log(`server is up and running on http://localhost:${port}`)
 })
