@@ -125,15 +125,18 @@
         <form id="student-register">
           <div class="form-group">
             <label for="first-name">First Name</label>
-            <input type="text" name="firstName" id="first-name" required />
+            <input type="text" onkeydown="return /[a-z]/i.test(event.key)" name="firstName" id="first-name" required />
           </div>
           <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input type="text" name="lastName" id="last-name" required />
+            <input type="text" onkeydown="return /[a-z]/i.test(event.key)" name="lastName" id="last-name" required />
           </div>
           <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" name="age" id="age" min="10" max="100" required />
+            <label for="month">Month</label>
+              <input placeholder="Enter month number..." name="month" id="month" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" required/>
+            <label for="year">Year</label>
+            <input name="year" id="year" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "4" required/> 
+         
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -141,7 +144,7 @@
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="number" name="phone" id="phone" required />
+            <input type="number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "10" id="phone" required />
           </div>
           
           <div class="form-group">

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Contact</title>
+</head>
+<body id="about-bg">
+    <header>
+        <nav id="navbar">
+          <div class="container">
+            <h1 class="logo">
+              <a href="companyindex.html">Student Internship Management System</a>
+            </h1>
+            <ul>
+              <li><a  href="companyindex.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a class="current" href="#">Contact</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+              <li><a href="feedback.html">Reviews</a></li>
+              <li><a class="logout-btn" href="#">Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div class="boxx">
+        <div class="contactPage-img">
+          <img src="../assets/img/contactPage1.svg">
+         </div>
+      <section id="contact-form" class="py3">
+        <div class="contain">
+            <h1 style="text-align: center;" class="l1"><span class="">Contact</span>Us</h1>
+           <h3> <p style="text-align: center;">Please fill the form to contact us</p></h3>
+
+            <form id="contact-send-form" >
+                <div class="form-group">
+                    <label class="txt1" for="name">Name</label>
+                    <input class="name1" id="name" required/>
+                </div>
+                <div class="form-group">
+                    <label class="txt1" for="email">email</label>
+                    <input type="email" name="email" id="email" required/>
+                </div>
+                <div class="form-group">
+                    <label class="txt1" for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10" required></textarea>
+                </div>
+                <button type="submit" id="my-form-button" class="btn">submit</button>
+              <p id="my-form-status" style="color: aliceblue; font-weight: 800;"></p>
+            </form>
+
+    
+
+          
+        </div>
+       </section>
+    
+      </div> 
+        <div class="container">
+            <div class="box">
+              <a href="https://goo.gl/maps/znUsY69bTQRCfVuq5" target="_blank" > 
+              <i class="fa-solid fa-hotel fa-3x"></i>
+                <h3>Location</h3>
+                <p>MO, USA</p> </a>
+            </div>
+            <div  class="box tooltip" onclick="myfun()" onmouseout="outfun()">
+            <i class="fa-solid fa-phone fa-3x"></i>
+            
+            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+          
+                <h3>phone</h3>
+                <p>(+1) 1234567890</p>
+            </div>
+            <div class="box">
+               <a href="mailto:studentinternship123@gmail.com"  target="_blank"><i class="fa-solid fa-envelope fa-3x"></i>
+                <h3>Email</h3>
+                <p>studentinternship123@gmail.com</p> </a> 
+        </div>       
+     </div>
+       
+        <footer class="footer bg-dark" style="background: #444;
+      
+        padding: 10px;
+        padding-bottom: 0px;
+       
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin-bottom: 0 !important; ">
+          <div class="social">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+          <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          </div>
+          <p>copyright &copy 2023 - SIMS</p>
+      </footer>
+
+</body>
+    <script src="contact.js"></script>
+    <script src="js/logout.js"></script>
+    
+   <script>
+        window.addEventListener("DOMContentLoaded",() => {
+        if(localStorage.getItem('name')){
+			var stdname = localStorage.getItem('name')
+			document.getElementById("name").value = document.getElementById("name").defaultValue = stdname
+			console.log(stdname)
+		}
+  })
+    function outfun(){
+      var tooltip = document.getElementById("myTooltip");
+              tooltip.innerHTML = 'Copy to clipboard';
+    }
+    function myfun(){
+  navigator.clipboard?.writeText && navigator.clipboard.writeText('+11234567890');
+              var tooltip = document.getElementById("myTooltip");
+           tooltip.innerHTML = 'Copied: +1234567890';
+}
+   </script>
+</html>

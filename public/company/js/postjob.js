@@ -2,7 +2,32 @@ const $postjob=document.getElementById("post-job")
 
 const $postedby=localStorage.getItem('companyid')
 
+const $logoutbtn=document.querySelector('.logout-btn')
+
 const token=localStorage.getItem('token')
+
+$logoutbtn.addEventListener('click',async(e)=>{
+    const confirmLogout=confirm("Are you sure you want to logout?");
+    if(confirmLogout){
+    const result = await fetch('/company/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization':'Bearer '+token
+        },
+        body: JSON.stringify({
+           
+        })
+    }).then((res)=>{
+        localStorage.clear()
+        location.href="/"
+      //  alert("success")
+        return res.json()
+    })
+    console.log(result)
+}
+})
+
   
 $postjob.addEventListener("submit",async(e)=>{
     e.preventDefault()
@@ -15,6 +40,7 @@ $postjob.addEventListener("submit",async(e)=>{
     const $emptype=document.getElementById("emptype").value
     const $worktype=document.getElementById("worktype").value
     const $aboutcompany = document.querySelector('#aboutcompany')
+    const $salary = document.getElementById("salary").value
     const $empbenefits=document.getElementById("empbenifits").value
     console.log($companyid,$companyname,$postedby,$requirements,$title,$yoe)
     const formData = new FormData()
@@ -25,6 +51,7 @@ $postjob.addEventListener("submit",async(e)=>{
     formData.append("yoe",$yoe)
     formData.append("emptype",$emptype)
     formData.append("worktype",$worktype)
+    formData.append("salary",$salary)
     formData.append("empbenefits",$empbenefits)
     formData.append("aboutcompany",$aboutcompany.files[0])
     formData.append("postedby",$postedby)
@@ -38,8 +65,8 @@ $postjob.addEventListener("submit",async(e)=>{
     })
      //console.log(result,"result")
     if (!result.error) {
-        location.href="/company/companyindex.html"
         alert("Job Posted")
+        location.href="/company/companyindex.html"
     } else {
         alert("unable to post job")
     }

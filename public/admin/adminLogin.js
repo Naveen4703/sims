@@ -37,13 +37,13 @@ $adminLoginForm.addEventListener('submit',async (e)=>{
             password:$password
         })
     }).then((res) => res.json())
-    console.log(result)
+  //  console.log(result)
     if (!result.error) {
         localStorage.setItem('token', result.token)
         localStorage.setItem('name',result.user.firstname)
         localStorage.setItem('adminid',result.user._id)
         location.href="/admin/adminindex.html"
-        alert("success")
+       // alert("success")
     } else {
         alert(result.error)
     }

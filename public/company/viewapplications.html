@@ -6,9 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>view applications</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
   <!-- <script src="./js/authcheck.js"></script>-->
 </head>
 <body id="job-body" >
+  <nav id="navbar">
+    <div class="container1">
+      <center>
+      <h1 class="logo">
+        <a  href="./companyindex.html">Student Internship Management System</a>
+      </h1>
+      <ul> 
+        <li><a href="./companyindex.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="postjob.html">Post Job</a></li>
+        <li><a href="../student/contact.html"  target="_blank">Contact</a></li>
+        <li><a href="../student/feedback.html"  target="_blank">Reviews</a></li>
+        <li><a class="logout-btn" href="#">Logout</a></li>
+      </ul>
+    </center>
+    </div>
+  </nav>
   <div class="container">
         <div  style="overflow: hidden; margin-top: 50px;"
        class="topnav">
@@ -18,13 +36,24 @@
         border: 1px solid;
         margin-top: 8px;
         margin-right: 16px;
-        font-size: 17px;" type="text" id="searchbox" placeholder="Search..">
+        font-size: 17px;" class="searchbox" type="text" id="searchbox" placeholder="Search..">
+        <input class="searchbox" type="text" onkeydown="return /[a-z]/i.test(event.key)" id="name" placeholder="Name">
+        <input class="searchbox" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" id="age" placeholder="Age">
         <button style="padding: 7px;   border-radius: 8px;background-color: #fff  " class="searchbutton">Search</button>
       </div>
     
-        <div id="jobs" style="display: grid;"> </div>
+        <div id="jobs"> </div>
         
         </div>
+        <footer class="footer bg-dark" id="footer" style="margin-top: 0px; background:#444;">
+          <div class="social">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          </div>
+          <p>copyright &copy 2023 - SIMS</p>
+      </footer>
     <script src="js/viewApplications.js"></script>
     <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
 </body>

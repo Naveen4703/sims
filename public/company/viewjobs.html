@@ -6,15 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>posted jobs</title>
     <link rel="stylesheet" href="css/style.css" />
-
+    <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
     <script src="./js/authcheck.js"></script>
   </head>
   <body id="job-body">
-    <div class="container">
+    <nav id="navbar">
+      <div class="container1">
+        <center>
+        <h1 class="logo">
+          <a href="./companyindex.html">Student Internship Management System</a>
+        </h1>
+        <ul> 
+          <li><a href="./companyindex.html">Home</a></li>
+         
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="postjob.html">Post Job</a></li>
+          <li><a href="../student/contact.html"  target="_blank">Contact</a></li>
+          <li><a href="../student/feedback.html"  target="_blank">Reviews</a></li>
+          <li><a class="logout-btn" href="#">Logout</a></li>
+        </ul>
+      </center>
+      </div>
+    </nav>
+    <div class="container" style = "padding-top: 20px;" >
+      <div  style="overflow: visible;"
+      class="topnav">
+       <input class="searchbox" type="text" id="searchbox" placeholder="Search...">
+       <input class="searchbox" type="text" onkeydown="return /[a-z]/i.test(event.key)" id="companyName" placeholder="Company name">
+       <input class="searchbox" type="text" onkeydown="return /[a-z]/i.test(event.key)" id="jobTitle" placeholder="Job Title">
+       <input class="searchbox" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "2" id="experience" placeholder="Experience">
+       <select class="searchbox" id="jobType" name="jobType">
+        <option value="">Job Type</option>
+        <option value="onsite">On-site</option>
+        <option value="remote">Remote</option>
+      </select>
+       <input class="searchbox" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "6" id="salary" placeholder="Salary">
+    <!--  <select name="filtertype" style="padding: 7px;   border-radius: 8px;background-color: #fff" id="filtertype">
+         <option value="1">Company Name</option>
+         <option value="2">Job Title</option>
+         <option value="3">Experience Level</option>
+         <option value="4">Work Type</option>
+         </select> -->
+       <button style="padding: 8px 15px; border-radius: 8px;background-color: #fff" class="searchbutton">Search</button>
+     </div>
       <div id="jobs">
         
       </div>
     </div>
+    <footer class="footer bg-dark" id="footer" style="margin-top: 0px; background:#444;">
+      <div class="social">
+        <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+      </div>
+      <p>copyright &copy 2023 - SIMS</p>
+  </footer>
     <script src="js/viewJobs.js"></script>
     <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
   </body>

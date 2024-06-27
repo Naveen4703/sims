@@ -6,7 +6,9 @@ const $firstname=document.getElementById("first-name")
 const $lastname=document.getElementById("last-name")
 const $email=document.getElementById("email")
 const $gender= document.getElementById("gender")
-const $age=document.getElementById("age")
+const $month = document.getElementById("month")
+const $year = document.getElementById("year")
+const $age= $month > 04 ? 2023 - $year  : 2023 - $year
 const $companyid=document.getElementById("companyid")
 const $phone=document.getElementById("phone")
 
@@ -26,7 +28,8 @@ window.onload=async()=>{
      $lastname.value = result.lastname
      $email.value = result.email
      $gender.value = result.gender
-     $age.value = result.age
+     $month.value = result.month
+     $year.value = result.year
      $companyid.value = result.companyid
      $phone.value = result.phone
     

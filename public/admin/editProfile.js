@@ -6,7 +6,9 @@ const $firstname=document.getElementById("first-name")
 const $lastname=document.getElementById("last-name")
 const $email=document.getElementById("email")
 const $gender= document.getElementById("gender")
-const $age=document.getElementById("age")
+const $month = document.getElementById("month")
+const $year = document.getElementById("year")
+const $age = $month > 04 ? 2023 - $year  : 2023 - $year
 const $phone=document.getElementById("phone")
 
 
@@ -25,7 +27,8 @@ window.onload=async()=>{
      $lastname.value = result.lastname
      $email.value = result.email
      $gender.value = result.gender
-     $age.value = result.age
+     $month.value = result.month
+     $year.value = result.year
      $phone.value = result.phone
     
 }
@@ -40,7 +43,9 @@ $studentRegForm.addEventListener('submit',async (e)=>{
     const $lastname=document.getElementById("last-name").value
     const $email=document.getElementById("email").value
     const $gender= document.getElementById("gender").value
-    const $age=document.getElementById("age").value
+    const $month = document.getElementById("month").value
+     const $year = document.getElementById("year").value
+    const $age = $month > 04 ? 2023 - $year  : 2023 - $year
     const $phone=document.getElementById("phone").value
 
     console.log($gender,$phone,"gender, value")
@@ -57,6 +62,8 @@ $studentRegForm.addEventListener('submit',async (e)=>{
                 firstname:$firstname,
                 lastname:$lastname,
                 email:$email,
+                month:$month,
+                year: $year,
                 age:$age,
                 gender:$gender,
                 phone:$phone,

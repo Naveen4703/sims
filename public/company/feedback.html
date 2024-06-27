@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet">
+
+	<title>Document</title>
+</head>
+<style>
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 223;
+	--white: hsl(var(--hue),10%,100%);
+	--lt-gray: hsl(var(--hue),10%,95%);
+	--gray1: hsl(var(--hue),10%,90%);
+	--gray2: hsl(var(--hue),10%,80%);
+	--gray7: hsl(var(--hue),10%,30%);
+	--gray9: hsl(var(--hue),10%,10%);
+	--primary: hsl(var(--hue),90%,55%);
+	--blue: #a1fabf;
+    --lightblue: #9bf0f7;
+	--trans-dur: 0.3s;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+	background-color: var(--white);
+	color: var(--gray9);
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+	background-attachment: fixed;
+	background-position: center;
+	
+}
+/* Main styles  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> */
+.fr {
+	animation: fade-slide-in 0.6s ease-out;
+	padding: 0 1.5em;
+	max-width: 20em;
+}
+.fr__face {
+	--face-hue1: 60;
+	--face-hue2: 30;
+	background-image:
+		linear-gradient(
+			135deg,
+			hsl(var(--face-hue1),90%,55%),
+			hsl(var(--face-hue2),90%,45%)
+		);
+	border-radius: 50%;
+	box-shadow: 0 0.5em 0.75em hsla(var(--face-hue2),90%,55%,0.3);
+	margin: 0 auto 2em;
+	position: relative;
+	width: 3em;
+	height: 3em;
+}
+.fr__face-right-eye,
+.fr__face-left-eye,
+.fr__face-mouth-lower,
+.fr__face-mouth-upper {
+	position: absolute;
+	transition:
+		background-color var(--trans-dur),
+		box-shadow var(--trans-dur),
+		color var(--trans-dur);
+}
+.fr__face-right-eye,
+.fr__face-left-eye {
+	background-color: var(--white);
+	border-radius: 50%;
+	top: 0.75em;
+	width: 0.6em;
+	height: 0.6em;
+}
+.fr__face-right-eye {
+	--delay-right: 0s;
+	animation: right-eye 1s var(--delay-right) linear paused;
+	clip-path: polygon(0 75%,100% 0,100% 100%,0 100%);
+	left: 0.6em;
+}
+.fr__face-left-eye {
+	--delay-left: 0s;
+	animation: left-eye 1s var(--delay-left) linear paused;
+	clip-path: polygon(0 0,100% 75%,100% 100%,0 100%);
+	right: 0.6em;
+}
+.fr__face-mouth-lower,
+.fr__face-mouth-upper {
+	color: var(--white);
+	top: 1.75em;
+	left: 0.75em;
+	width: 1.5em;
+	height: 0.75em;
+}
+.fr__face-mouth-lower {
+	--delay-mouth-lower: 0s;
+	animation: mouth-lower 1s var(--delay-mouth-lower) linear paused;
+	border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+	box-shadow: 0 0.125em 0 inset;
+}
+.fr__face-mouth-upper {
+	--delay-mouth-upper: 0s;
+	animation: mouth-upper 1s var(--delay-mouth-upper) linear paused;
+	border-radius: 0 0 50% 50% / 0 0 100% 100%;
+	box-shadow: 0 -0.125em 0 inset;
+}
+.fr__label {
+	display: block;
+	margin-bottom: 1.5em;
+	text-align: center;
+}
+.fr__input {
+	--input-hue: 60;
+	--percent: 50%;
+	background-color: var(--gray1);
+	background-image: linear-gradient(hsl(var(--input-hue),90%,45%),hsl(var(--input-hue),90%,45%));
+	background-size: var(--percent) 100%;
+	background-repeat: no-repeat;
+	border-radius: 0.25em;
+	display: block;
+	margin: 0.5em auto;
+	width: 100%;
+	max-width: 10em;
+	height: 0.5em;
+	transition: background-color var(--trans-dur);
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+}
+.fr__input:focus {
+	outline: transparent;
+}
+
+/* WebKit */
+.fr__input::-webkit-slider-thumb {
+	background-color: var(--white);
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 0 0.125em 0.5em hsl(0,0%,0%,0.3);
+	width: 1.5em;
+	height: 1.5em;
+	transition: background-color 0.15s linear;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.fr__input:focus::-webkit-slider-thumb,
+.fr__input::-webkit-slider-thumb:hover {
+	background-color: var(--lt-gray);
+}
+
+/* Firefox */
+.fr__input::-moz-range-thumb {
+	background-color: var(--white);
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 0 0.125em 0.5em hsl(0,0%,0%,0.3);
+	width: 1.5em;
+	height: 1.5em;
+	transition: background-color 0.15s linear;
+}
+.fr__input:focus::-moz-range-thumb,
+.fr__input::-moz-range-thumb:hover {
+	background-color: var(--lt-gray);
+}
+
+/* `:focus-visible` support */
+@supports selector(:focus-visible) {
+	.fr__input:focus::-webkit-slider-thumb {
+		background-color: var(--white);
+	}
+	.fr__input:focus-visible::-webkit-slider-thumb,
+	.fr__input::-webkit-slider-thumb:hover {
+		background-color: var(--lt-gray);
+	}
+	.fr__input:focus::-moz-range-thumb {
+		background-color: var(--white);
+	}
+	.fr__input:focus-visible::-moz-range-thumb,
+	.fr__input::-moz-range-thumb:hover {
+		background-color: var(--lt-gray);
+	}
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	body {
+	background-image: url("");
+    margin: 0;
+    background-size: cover;
+    opacity: unset;
+    overflow-x: visible;
+    overflow-y: scroll;
+    background-repeat: no-repeat;
+    height: 100%;
+		color: #050505;
+	}
+	.fr__face-right-eye,
+	.fr__face-left-eye {
+		background-color: var(--gray9);
+	}
+	.fr__face-mouth-lower,
+	.fr__face-mouth-upper {
+		color: var(--gray9);
+	}
+	.fr__input {
+		background-color: var(--gray7);
+	}
+}
+
+/* Animations */
+@keyframes fade-slide-in {
+	from,
+	16.67% {
+		opacity: 0;
+		transform: translateY(25%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes right-eye {
+	from { clip-path: polygon(0 75%,100% 0,100% 100%,0 100%); }
+	50%, to { clip-path: polygon(0 0,100% 0,100% 100%,0 100%); }
+}
+@keyframes left-eye {
+	from { clip-path: polygon(0 0,100% 75%,100% 100%,0 100%); }
+	50%, to { clip-path: polygon(0 0,100% 0,100% 100%,0 100%); }
+}
+@keyframes mouth-lower {
+	from {
+		border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+		top: 1.75em;
+		height: 0.75em;
+		visibility: visible;
+	}
+	40% {
+		border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+		top: 1.95em;
+		height: 0.25em;
+		visibility: visible;
+	}
+	50%,
+	to {
+		border-radius: 0;
+		top: 2em;
+		height: 0.125em;
+		visibility: hidden;
+	}
+}
+@keyframes mouth-upper {
+	from,
+	50% {
+		border-radius: 0;
+		box-shadow: 0 -0.125em 0 inset;
+		top: 2em;
+		height: 0.125em;
+		visibility: hidden;
+	}
+	62.5% {
+		border-radius: 0 0 50% 50% / 0 0 100% 100%;
+		box-shadow: 0 -0.125em 0 inset;
+		top: 1.95em;
+		height: 0.25em;
+		visibility: visible;
+	}
+	75% {
+		border-radius: 0 0 50% 50% / 0 0 100% 100%;
+		box-shadow: 0 -0.125em 0 inset;
+		top: 1.825em;
+		height: 0.5em;
+		visibility: visible;
+	}
+	to {
+		border-radius: 0 0 50% 50% / 0 0 100% 100%;
+		box-shadow: 0 -0.8em 0 inset;
+		top: 1.75em;
+		height: 0.75em;
+		visibility: visible;
+	}
+}
+.reviewForm{
+	height: 500px;
+	display: grid;
+	
+}
+.form-group{
+	margin-top: 20px;
+}
+
+
+
+.btn{
+	background-color: #a1fabf;
+background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
+border-radius: 20px;
+border: 1px solid var(--blue);
+color: black;
+cursor: pointer;
+font-size: 0.8rem;
+font-weight: bold;
+letter-spacing: 0.1rem;
+padding: 0.9rem 4rem;
+text-transform: uppercase;
+transition: transform 80ms ease-in;
+font-weight: bolder;
+box-shadow: 0px 0px 14px -7px #7ef7e7;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.btn:hover {
+    background-position: center;
+    /* change the direction of the change here */
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: black;
+    background-image: linear-gradient(90deg, rgb(24, 23, 23) 0%, #2c2c2c 74%);
+    text-decoration: none;
+  }
+.btn:active {
+transform: scale(0.95);
+}
+.btn:focus {
+outline: none;
+}
+.testimonials{
+  padding: 40px 0;
+  background: #f1f1f1;
+  color: #434343;
+  text-align: center;
+}
+.inner{
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.border{
+  width: 160px;
+  height: 5px;
+  background: #6ab04c;
+  margin: 26px auto;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+.col{
+  flex: 33.33%;
+  max-width: 33.33%;
+  box-sizing: border-box;
+  padding: 15px;
+  
+}
+.testimonial{
+  background: #fff;
+  padding: 30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  border: 1px  #050505;
+  border-radius: 8px;
+  transition: 1s;
+}
+.testimonial:hover{
+	transform: scale(1.1);
+}
+.testimonial img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.testimonial img:hover{
+	width : 150px;
+	height : 150px;
+	border-radius: 50%;
+}
+.name{
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+.stars{
+  color: #6ab04c;
+  margin-bottom: 20px;
+}
+
+a{
+	color: white;
+	float: right;
+}
+
+@media screen and (max-width:960px) {
+.col{
+  flex: 100%;
+ 
+}
+}
+
+@media screen and (max-width:600px) {
+.col{
+  flex: 100%;
+  max-width: 100%;
+}
+}
+
+/*Footer*/
+.footer {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+    margin-top: 50px !important;
+    position: relative;
+    bottom: 0 !important;
+    width: 100%;
+}
+
+.footer .social a{
+    margin-right: 20px;
+    color: turquoise;
+}
+
+.footer .social a:hover{
+    color: #fff;
+ /*   background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%); */
+    background-image: linear-gradient(45deg, #32be8f 0%, #38d39f 510%, #32be8f 100%);
+}
+
+/* Flex Items */
+.flex-items {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.flex-items >div {
+    padding: 20px;
+}
+
+/* utilities  */
+/* utilities  */
+.container{
+  margin: auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  height: 50px;
+  width: 100%;
+}
+#name , #email , #message {
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: 1s;
+    border: 2px solid #666666;
+	display: block;
+}
+#name:hover , #email:hover , #message:hover {
+   transform: scale(1.02);
+   border-color: whitesmoke;
+   border: 2px solid #000000;
+}
+.form-group label{
+	font-weight: bolder;
+	font-size: 15px;
+}
+.form-group input{
+	width: 100%;
+}
+/* Nav bar */
+#navbar {
+
+    height: 70px;
+  width: 100%;
+   /* background-image: linear-gradient(260deg, #3a3a3a 0%, #4e4e4e 100%); */
+   background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+    color: #FFF;
+    overflow-x: visible;
+    overflow-y: hidden;
+
+}
+
+#navbar a{
+    color: #fff;
+}
+
+#navbar .logo{
+    float: left;
+    margin-left: 0px !important;
+    padding-top: 20px;
+}
+
+#navbar ul{
+    list-style: none;
+    float: right;
+    margin-left: 20px !important;
+}
+
+#navbar ul li {
+    float: left;
+}
+
+#navbar ul li a{
+    font-size: 18px;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    transition: 0.1s;
+}
+
+#navbar ul li a:hover,
+#navbar ul li a.current {
+    
+    color: whitesmoke;
+    transform: scale(1.1);
+}
+#home {
+        margin: 0;  
+        overflow: visible;
+        height: 70px;
+        width: 100%;
+    }
+.contain {
+		background-color: rgb(255, 255, 255 , 0.1);
+		border-radius: 8px;
+		box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25),
+		0 0.7rem 0.7rem rgba(0, 0, 0, 0.22);
+		height: 730px;
+		max-height: 900px;
+		max-width: 600px;
+		min-height: 400px;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		transition: 1s;
+		top : 3% !important;
+		margin-bottom: 100px !important;
+		display: grid;
+		place-items: center;
+		border: 2px solid #333;
+		padding-bottom: 50px;
+		margin: 80px 450px;
+}
+.boxx{
+	display: grid;
+	height: 100%;
+	place-items: center;
+	width: 100%;
+}
+.contact-img{
+  height: 700px;
+  width:  650px;
+  z-index: -2;
+  opacity: 0.3;
+  top: 30%;
+  left: 0%;
+  position: absolute;
+}
+</style>
+<body >
+    <header>
+        <nav id="navbar">
+          <div class="container">
+            <h1 class="logo">
+              <a href="companyindex.html">Student Internship Management System</a>
+            </h1>
+            <ul>
+              <li><a  href="companyindex.html">Home</a></li>
+              <li><a  class="current" href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+              <li><a href="feedback.html">Reviews</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header> 
+	<div class="boxx">
+ <div class="contact-img">
+	<img src="./assets/img/contact.svg">
+ </div>
+	
+	  <div class="contain">
+	<!--	<div class="backs" style="float: right; color: white;">
+		<a href="index.html" style="text-decoration: none; color: black; float: right;" ><h2 style="margin: 5px; margin-right: 0px; float: right;"><u>BACK</u></h2></a> </div> -->
+    <form class="fr" style="margin-top: 50px;" action="">
+		<h3>  </h3>
+        <label class="fr__label" for="face-rating">How was your experience?</label>
+        <div class="fr__face" role="img" aria-label="Straight face">
+            <div class="fr__face-right-eye" data-right></div>
+            <div class="fr__face-left-eye" data-left></div>
+            <div class="fr__face-mouth-lower" data-mouth-lower></div>
+            <div class="fr__face-mouth-upper" data-mouth-upper></div>
+        </div>
+        <input class="fr__input" id="face-rating" type="range" value="2.5" min="0" max="5" step="0.1">
+    </form>
+	        
+	<form class="reviewForm" id="reviews-send-form" style=" margin-top: 30px;" action="">
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" id="name">
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label> 
+			<input type="email" name="email" id="email">
+		</div>
+		<div class="form-group">
+			<label for="message">Message</label>
+			<textarea name="message" id="message" cols="40" rows="10"></textarea>
+		</div> 
+		<button type="submit" style="margin-left: 100px; margin-top: 20px; border-radius: 8px;" id="submit-button" class="btn">SUBMIT</button>
+	  <p id="my-form-status"></p>
+	</form>
+</div>
+
+<!--
+<div class="testimonials">
+	<div class="inner">
+	  <h1>Testimonials</h1>
+	  <div class="border"></div>
+
+	  <div class="row">
+		<div class="col">
+		  <div class="testimonial">
+			<img src="p1.png" alt="">
+			<div class="name">John Wesley</div>
+			<div class="stars">
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			</div>
+
+			<p>
+			  This site is cool , I have been using it since past 6 months.<br> Last month I got selected for a product based comapany.<br> <br> Thank you SIMS!
+			</p>
+		  </div>
+		</div>
+
+		<div class="col">
+		  <div class="testimonial">
+			<img src="p2.png" alt="">
+			<div class="name">Dalia Mendoza</div>
+			<div class="stars">
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="far fa-star"></i>
+			  <i class="far fa-star"></i>
+			</div>
+
+			<p>
+			  One of the best intership's provider portal. I have sucessfully completed my <b> 3 </b> months intership using SIMS. <br> This portal is really helpul.
+			</p>
+		  </div>
+		</div>
+
+		<div class="col">
+		  <div class="testimonial">
+			<img src="p3.png" alt="">
+			<div class="name"> Monicca Cassendra </div>
+			<div class="stars">
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="fas fa-star"></i>
+			  <i class="far fa-star"></i>
+			</div>
+
+			<p>
+			  SIMS portal is really helpful for those people who are in requirement of jobs or interships. <br> The best & and east way to get a good job. Thank You :)
+			</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>  --> </div>
+  <footer class="footer bg-dark" style="
+margin-top: 0px; background:#444;">
+	<div class="social">
+	  <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+	<a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+	<a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+	<a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+	</div>
+	<p>copyright &copy 2023 - SIMS</p>
+</footer>
+  <script src="https://kit.fontawesome.com/f52c3b31f3.js" crossorigin="anonymous"></script>
+  
+    <script>window.addEventListener("DOMContentLoaded",() => {
+        const fr = new FaceRating("#face-rating");
+		console.log(document.getElementById("face-rating").value)
+    });
+    class FaceRating {
+        constructor(qs) {
+            this.input = document.querySelector(qs);
+            this.input?.addEventListener("input",this.update.bind(this));
+            this.face = this.input?.previousElementSibling;
+            this.update();
+        }
+        update(e) {
+            let value = this.input.defaultValue;
+    
+            // when manually set
+            if (e) value = e.target?.value;
+            // when initiated
+            else this.input.value = value;
+    
+            const min = this.input.min || 0;
+            const max = this.input.max || 100;
+            const percentRaw = (value - min) / (max - min) * 100;
+            const percent = +percentRaw.toFixed(2);
+    
+            this.input?.style.setProperty("--percent",`${percent}%`);
+    
+            // face and range fill colors
+            const maxHue = 120;
+            const hueExtend = 30;
+            const hue = Math.round(maxHue * percent / 100);
+    
+            let hue2 = hue - hueExtend;
+            if (hue2 < 0) hue2 += 360;
+    
+            const hues = [hue,hue2];
+            hues.forEach((h,i) => {
+                this.face?.style.setProperty(`--face-hue${i + 1}`,h);
+            });
+    
+            this.input?.style.setProperty("--input-hue",hue);
+    
+            // emotions
+            const duration = 1;
+            const delay = -(duration * 0.99) * percent / 100;
+            const parts = ["right","left","mouth-lower","mouth-upper"];
+    
+            parts.forEach(p => {
+                const el = this.face?.querySelector(`[data-${p}]`);
+                el?.style.setProperty(`--delay-${p}`,`${delay}s`);
+            });
+    
+            // aria label
+            const faces = [
+                "Sad face",
+                "Slightly sad face",
+                "Straight face",
+                "Slightly happy face",
+                "Happy face"
+            ];
+            let faceIndex = Math.floor(faces.length * percent / 100);
+            if (faceIndex === faces.length) --faceIndex;
+    
+            this.face?.setAttribute("aria-label",faces[faceIndex]);
+        }
+    }
+	
+const $review=document.getElementById("submit-button")
+
+$review.addEventListener('click',async (e)=>{
+
+	e.preventDefault()
+	const $name = document.getElementById("name").value
+	const $mail = document.getElementById("email").value
+	const $msg = document.getElementById("message").value
+	const $rating = document.getElementById("face-rating").value
+
+	const result = await fetch('/review', {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({
+		name:$name,
+		email:$mail,
+		message:$msg,
+		rating:$rating
+	})
+}).then((res) => res.json())
+console.log(result)
+if (!result.error) {
+	alert("success")
+} else {
+	alert("unuble to submit")
+}
+
+})</script>
+ 
+</body>
+</html>

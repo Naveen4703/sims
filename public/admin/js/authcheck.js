@@ -1,7 +1,3 @@
-// if(!localStorage.getItem("token")){
-//     location.href="/admin/adminLogin.html"
-// }
-
 const coockievalue=document.cookie
 if(!coockievalue){
     location.href="/admin/adminLogin.html"
@@ -18,4 +14,8 @@ if(!coockievalue){
 //     if(!auth || type !=admin){
 //         location.href="/"
 //     }
+// }
+
+// if(!localStorage.getItem("token")){
+//     location.href="/admin/adminLogin.html"
 // }

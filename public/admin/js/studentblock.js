@@ -17,7 +17,7 @@ window.onload=async()=>{
         
     }).then((res) => res.json())
     console.log(result)
-    alert("success")
+   // alert("success")
     window.location = "viewapplications.html"
 
 } 
